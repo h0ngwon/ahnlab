@@ -23,6 +23,7 @@ const loadCatList = () => __awaiter(void 0, void 0, void 0, function* () {
         img.addEventListener("click", () => {
             modal.style.display = "block";
             modalImg.src = img.src;
+            document.body.style.overflow = "hidden";
         });
         wrapper.appendChild(img); // appendChild로 grid에 추가
         catGrid.appendChild(wrapper);
@@ -41,9 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     observer.observe(scrollAnchor); // 스크롤 타겟 설정
     loadCatList();
-    modalClose.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+});
+modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
 });
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {
