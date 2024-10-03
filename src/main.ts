@@ -1,23 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const catGrid = document.getElementById("catGrid") as HTMLDivElement;
-  const scrollAnchor = document.getElementById(
-    "scrollAnchor"
-  ) as HTMLDivElement;
+const catGrid = document.getElementById("catGrid") as HTMLDivElement;
+const scrollAnchor = document.getElementById("scrollAnchor") as HTMLDivElement;
+const modal = document.querySelector(".modal") as HTMLElement;
+const modalImg = document.querySelector(".modal-img") as HTMLImageElement;
+const modalClose = document.querySelector(".modal-close-btn") as HTMLElement;
 
-  const loadCatList = async () => {
-    const catList = await fetchCatList();
+const loadCatList = async () => {
+  const catList = await fetchCatList();
 
-    catList.map((cat) => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "img-wrapper";
+  catList.map((cat) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "img-wrapper";
 
-      const img = document.createElement("img");
-      img.src = cat.url;
+    const img = document.createElement("img");
+    img.src = cat.url;
 
-      wrapper.appendChild(img); //appendChild로 grid에 추가
-      catGrid.appendChild(wrapper);
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
     });
-  };
+
+    wrapper.appendChild(img); // appendChild로 grid에 추가
+    catGrid.appendChild(wrapper);
+  });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM 로딩 후
+  modal.style.display = "none";
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -26,10 +35,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
     {
+      rootMargin: "500px",
       threshold: 0.3,
     }
   );
 
   observer.observe(scrollAnchor); // 스크롤 타겟 설정
   loadCatList();
+
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+});
+
+modal.addEventListener("click", (e: MouseEvent) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
 });

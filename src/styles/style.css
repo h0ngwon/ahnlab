@@ -1,7 +1,7 @@
 .cat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 30px;
 }
 
 .img-wrapper {
@@ -9,6 +9,8 @@
   height: 400px;
   overflow: hidden;
   border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 img {
@@ -25,4 +27,50 @@ header {
   background-color: #aad1e7;
   color: #fff;
   margin-bottom: 20px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-img-wrapper {
+  width: 500px;
+  height: 500px;
+}
+
+.modal-img {
+  object-fit: cover;
+  border-radius: 40px;
+}
+
+.modal-content {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.modal-close-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 40px;
+  background-color: #aad1e7;
+  color: #fff;
+  cursor: pointer;
 }
