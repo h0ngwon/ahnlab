@@ -1,0 +1,10 @@
+{
+  "name": "ahnlab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "h0ngwon <w___on@naver.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
