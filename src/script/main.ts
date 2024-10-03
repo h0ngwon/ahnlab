@@ -50,8 +50,7 @@ modalClose.addEventListener("click", () => {
   document.body.style.overflow = "auto";
 });
 
-modal.addEventListener("click", (e: MouseEvent) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
+modal.addEventListener("click", () => {
+  modal.style.display = "none";
+  document.body.style.overflow = "auto";
 });
